@@ -1,0 +1,33 @@
+{
+  "name": "rastrvektr",
+  "version": "0.0.1",
+  "description": "multi-paradigm rendering toolkit",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/domjancik/rastrvektr.git"
+  },
+  "keywords": [
+    "raster",
+    "vector",
+    "renderer",
+    "graphics",
+    "creative",
+    "experimental"
+  ],
+  "author": "Dominik Jancik (@domjancik)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/domjancik/rastrvektr/issues"
+  },
+  "homepage": "https://github.com/domjancik/rastrvektr#readme",
+  "devDependencies": {
+    "webpack": "^5.11.1"
+  }
+}
