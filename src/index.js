@@ -1,7 +1,9 @@
+const SIDE_LENGTH = 20;
+
 const getBackgroundFunction = () => {
     let index = 0;
 
-    return () => ['red', 'blue', 'black'][index++ % 3]
+    return () => ['red', 'blue', 'black', 'white'][index++ % 4]
 }
 
 const getBackground = getBackgroundFunction();
@@ -16,11 +18,40 @@ const makeSquare = () => {
     width: 50px;
     height: 50px;
     background: ${background};
-    `
+    border-radius: 5px;
+    transition: all 100ms;
+    box-shadow: inset 0 -5px rgba(255, 255, 255, 0.2);
+    `;
+
+    const update = () => {
+        div.style.background = getBackground();
+    }
+
+    setInterval(update, 50 + Math.random() * 10);
+
+    return div;
 }
 
-document.appendChild(makeSquare());
-document.appendChild(makeSquare());
-document.appendChild(makeSquare());
-document.appendChild(makeSquare());
-document.appendChild(makeSquare());
+const app = document.body;
+app.style =
+`
+background: black;
+
+padding: 0;
+margin: 0;
+overflow: hidden;
+
+height: 100vw;
+width: 100vw;
+
+display: grid;
+grid-template-columns: repeat(${SIDE_LENGTH}, 1fr);
+grid-template-rows: repeat(${SIDE_LENGTH}, 1fr);
+
+align-items: center;
+justify-items: center;
+`;
+
+for (let index = 0; index < SIDE_LENGTH ** 2; index++) {
+    app.appendChild(makeSquare());
+}
