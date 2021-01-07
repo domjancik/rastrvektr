@@ -27,7 +27,7 @@ const makeSquare = () => {
         div.style.background = getBackground();
     }
 
-    setInterval(update, 50 + Math.random() * 10);
+    setInterval(update, 50 + Math.random() * 10000);
 
     return div;
 }
