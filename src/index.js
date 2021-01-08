@@ -1,19 +1,19 @@
-// const initModule = ( { init } ) => init();
+const initModule = ( { default: init } ) => {
+    document.body.innerHTML = '';
+    init();
+};
 
 const loadSquarium = async () => {
-    document.body.innerHTML = '';
-    const { default: init } = await import('./squarium')
-    init();
+    initModule(await import('./squarium'));
 }
 
-// const loadSpeechToText = async () => {
-//     document.body.innerHTML = '';
-//     const { default: init } = await import('./squarium')
-//     init();
-// }
+const loadSpeechToText = async () => {
+    initModule(await import('./speech_to_text'));
+}
 
 document.body.innerText = 'Menu here maybe';
 
 // setInterval(loadSquarium, 2000);
 
-loadSquarium();
+// loadSquarium();
+loadSpeechToText();

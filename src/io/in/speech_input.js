@@ -1,6 +1,8 @@
 // new speech recognition object
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var recognition = new SpeechRecognition();
+
+recognition.continuous = true;
             
 // This runs when the speech recognition service starts
 recognition.onstart = function() {
@@ -9,14 +11,15 @@ recognition.onstart = function() {
 
 recognition.onspeechend = function() {
     // when user is done speaking
+    console.log("On speech end");
     recognition.stop();
 }
               
 // This runs when the speech recognition service returns result
-// recognition.onresult = function(event) {
-//     var transcript = event.results[0][0].transcript;
-//     var confidence = event.results[0][0].confidence;
-// };
+recognition.onresult = function(event) {
+    var transcript = event.results[0][0].transcript;
+    var confidence = event.results[0][0].confidence;
+};
               
 /**
  * Start recognition, return transcript/confidence
@@ -36,6 +39,8 @@ const listen = () => {
                 confidence
             })
         }
+
+        recognition.onnomatch = () => reject('No match');
     })
 }
 
@@ -45,4 +50,5 @@ export { listen };
 
 // TODO 
 
-// [ ] Exception when listen() is called when already listening - Already listening, give me a sec!
+// [ ] Clean promise reject on Exception when listen() is called when already listening - Already listening, give me a sec!
+// [ ] Wrap with some Rx lib for continuous listening
