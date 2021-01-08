@@ -32,26 +32,30 @@ const makeSquare = () => {
     return div;
 }
 
-const app = document.body;
-app.style =
-`
-background: black;
-
-padding: 0;
-margin: 0;
-overflow: hidden;
-
-height: 100vw;
-width: 100vw;
-
-display: grid;
-grid-template-columns: repeat(${SIDE_LENGTH}, 1fr);
-grid-template-rows: repeat(${SIDE_LENGTH}, 1fr);
-
-align-items: center;
-justify-items: center;
-`;
-
-for (let index = 0; index < SIDE_LENGTH ** 2; index++) {
-    app.appendChild(makeSquare());
+const init = () => {
+    const app = document.body;
+    app.style =
+    `
+    background: black;
+    
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    
+    height: 100vw;
+    width: 100vw;
+    
+    display: grid;
+    grid-template-columns: repeat(${SIDE_LENGTH}, 1fr);
+    grid-template-rows: repeat(${SIDE_LENGTH}, 1fr);
+    
+    align-items: center;
+    justify-items: center;
+    `;
+    
+    for (let index = 0; index < SIDE_LENGTH ** 2; index++) {
+        app.appendChild(makeSquare());
+    }
 }
+
+export default init;
