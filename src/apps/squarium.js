@@ -1,9 +1,11 @@
 const SIDE_LENGTH = 20;
 
+const colors = [];
+
 const getBackgroundFunction = () => {
     let index = 0;
 
-    return () => ['red', 'blue', 'black', 'white'][index++ % 4]
+    return () => colors[index++ % colors.length]
 }
 
 const getBackground = getBackgroundFunction();
@@ -32,7 +34,10 @@ const makeSquare = () => {
     return div;
 }
 
-const init = () => {
+const init = (defaultColors = ['red', 'blue', 'black', 'white']) => {
+    colors.length = 0;
+    colors.push(...defaultColors);
+
     const app = document.body;
     app.style =
     `
@@ -58,4 +63,4 @@ const init = () => {
     }
 }
 
-export default init;
+export { init, colors };

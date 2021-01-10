@@ -1,8 +1,6 @@
 // new speech recognition object
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var recognition = new SpeechRecognition();
-
-recognition.continuous = true;
             
 // This runs when the speech recognition service starts
 recognition.onstart = function() {
@@ -32,7 +30,7 @@ const listen = () => {
     return new Promise((resolve, reject) => {
         recognition.onresult = event => {
             const transcript = event.results[0][0].transcript;
-            const confidence = event.results[0][0].confidence;
+            const confidence = event.results[0][0].confidence;  
 
             resolve({
                 transcript,

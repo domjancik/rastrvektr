@@ -1,4 +1,4 @@
-import { listen } from './io/in/speech_input'
+import { listen } from '../io/in/speech_input'
 
 const startListening = () => listen().then(result => {
     console.table(result);
@@ -22,4 +22,4 @@ const init = () => {
     document.body.appendChild(ci('p', "Open console to see full results."));
 }
 
-export default init;
+export { init };
